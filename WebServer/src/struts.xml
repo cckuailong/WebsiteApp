@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<include file="struts-default.xml"/>
+    <package name="com.lovebear.WebServer" extends="struts-default">
+        <action name="Server" class="com.lovebear.WebServer.Server" method="Server">
+            <result name="success">/success.jsp</result>
+        </action>
+       
+    </package>
+</struts>    
