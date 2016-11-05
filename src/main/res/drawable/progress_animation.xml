@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-rotate
+    android:drawable="@drawable/loding"
+    android:duration = "500"
+    android:pivotY="50%"
+    android:pivotX="50%"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    />
+
