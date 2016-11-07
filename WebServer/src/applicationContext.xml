@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/website">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/lovebear/entity/User.hbm.xml</value>
+				<value>com/lovebear/entity/Data.hbm.xml</value></list>
+		</property></bean>
+	<bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" id="transactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:advice transaction-manager="transactionManager" id="txAdvice">
+		<tx:attributes>
+			<tx:method name="get*" propagation="NEVER"/>
+			<tx:method name="set*" propagation="NEVER"/>
+			<tx:method name="query*" propagation="NEVER"/>
+			<tx:method name="find*" propagation="NEVER"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.lovebear.service..*(..))" id="service"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="service"/>
+	</aop:config>
+	<!--  dao  -->
+	<bean class="com.lovebear.dao.UserDao" id="userDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--  service  -->
+	<bean class="com.lovebear.service.UserService" id="userService">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<!--  actions  -->
+	<bean class="com.lovebear.actions.UserAction" id="userAction"
+	scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<!--  dao  -->
+	<bean class="com.lovebear.dao.OperateDao" id="operateDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--  service  -->
+	<bean class="com.lovebear.service.DataService" id="dataService">
+		<property name="operateDao" ref="operateDao"></property>
+	</bean>
+	<!--  actions  -->
+	<bean class="com.lovebear.actions.DataAction" id="dataAction"
+	scope="prototype">
+		<property name="dataService" ref="dataService"></property>
+	</bean>
+</beans>
