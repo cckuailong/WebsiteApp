@@ -2,7 +2,6 @@ package com.example.hasee.news.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +64,7 @@ public class FirstPageAdapter extends RecyclerView.Adapter{
         }else if(holder instanceof  ItemViewHolder){
             //处理每个item的布局
             ItemViewHolder itemViewHolder = (ItemViewHolder)holder;
-            itemViewHolder.simpleview.setImageURI(item_data.get(position-1).getThumbnail());
+            itemViewHolder.simpleview.setImageURI(item_data.get(position-1).getThumbnail_pic_s());
             itemViewHolder.textView.setText(item_data.get(position-1).getTitle());
             if(listener != null){
                 holder.itemView.setOnClickListener(new View.OnClickListener() {

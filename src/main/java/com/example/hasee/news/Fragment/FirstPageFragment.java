@@ -8,12 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.hasee.news.Bean.BannerBean;
 import com.example.hasee.news.Bean.Data;
@@ -119,7 +117,9 @@ public class FirstPageFragment extends Fragment implements  JsonUtils.CallBackLi
     public void update(List<Data>[] msg_list) {
 
         //utils.closeProgressDialog();
+        this.msg_list = new ArrayList[7];
         this.msg_list = msg_list;
+
         initdata(1);
 
     }
@@ -131,9 +131,10 @@ public class FirstPageFragment extends Fragment implements  JsonUtils.CallBackLi
             String []title = new String[3];
             String []tourl = new String[3];
 
-            List<Data> data = msg_list[mPosition];
+            List<Data> data = msg_list[0];
             for(int i = 0;i<3;i++){
-                img[i] = data.get(i).getThumbnail();
+                Log.i("list22", "update: "+data.get(i).getThumbnail_pic_s());
+                img[i] = data.get(i).getThumbnail_pic_s();
                 title[i] = data.get(i).getTitle();
                 tourl[i] = data.get(i).getUrl();
 

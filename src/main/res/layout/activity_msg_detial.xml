@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.hasee.news.MsgDetialActivity">
+
 <WebView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/webView_msgDetail"
 
     />
-<include layout = "@layout/header_layout"></include>
 </RelativeLayout>

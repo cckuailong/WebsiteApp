@@ -2,6 +2,7 @@ package com.example.hasee.news;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -18,7 +19,17 @@ public class MsgDetialActivity extends AppCompatActivity {
         int position = getIntent().getIntExtra("position",0);
 
         String url = getIntent().getStringExtra("url");
-        webview.loadUrl(url);
+        String url1 = "";
+        char[] a = url.toCharArray();
+        for(int i = 0;i<url.length();i++){
+            if(a[i] == '?'){
+                break;
+            }else{
+                url1+=a[i];
+            }
+        }
+        Log.i("url", "onCreate: "+url1);
+        webview.loadUrl(url1);
     }
 
 
