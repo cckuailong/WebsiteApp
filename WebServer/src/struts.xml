@@ -4,6 +4,18 @@
 <package name="default" extends="struts-default" namespace="/">
 	<action name="login" method="login" class="com.lovebear.actions.UserAction"></action>
 	<action name="register" method="register" class="com.lovebear.actions.UserAction"></action>
-	<action name="getData" method="getData" class="com.lovebear.actions.DataAction"></action>
+	<action name="getData" method="getData" class="com.lovebear.actions.DataAction">
+		<result name="success">test.jsp</result>
+	</action>
+	<action name="adminLogin" method="adminLogin" class="com.lovebear.admin.adminLogin">
+		<result name="success">index.html</result>
+         <result name="error">loginErr.jsp</result>
+	</action>
+	<action name="viewData" method="viewData" class="com.lovebear.admin.adminLogin">
+		<result name="success">operatedata.jsp</result>
+	</action>
+	<action name="deleteByUniquekey" method="deleteByUniquekey" class="com.lovebear.admin.adminLogin">
+		<result name="success">index.html</result>
+	</action>
 </package>
 </struts>    

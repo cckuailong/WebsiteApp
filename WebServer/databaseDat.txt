@@ -1,16 +1,98 @@
+//top
 create table data(
         title varchar(200),        
         date varchar(30),       
         author_name varchar(50),     
         thumbnail_pic_s varchar(200),        
-        thumbnail_pic_s02 varchar(200),       
-        thumbnail_pic_s03 varchar(200),
 		url varchar(200),
 		uniquekey varchar(30),
 		type varchar(20),
-		realtype varchar(20)
+		source varchar(30)
+);
+//society
+create table society(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//internation
+
+create table internation(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//entertain
+
+create table entertain(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//sport
+
+create table sport(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//military
+
+create table military(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//tech
+
+create table tech(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
 );
 
+//finance
+create table finance(
+        title varchar(200),        
+        date varchar(30),       
+        author_name varchar(50),     
+        thumbnail_pic_s varchar(200),        
+		url varchar(200),
+		uniquekey varchar(30),
+		type varchar(20),
+		source varchar(30)
+);
+//login
 create table userinfo(
         uid varchar(20),        
         phone varchar(20),       

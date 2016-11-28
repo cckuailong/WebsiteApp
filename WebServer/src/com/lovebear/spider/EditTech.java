@@ -10,18 +10,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONArray;
-import com.lovebear.entity.Data;
-import com.lovebear.entity.DataId;
+import com.alibaba.fastjson.JSONObject;
+import com.lovebear.entity.tech;
+import com.lovebear.entity.techId;
 
+public class EditTech {
 
-public class EditJson extends HibernateDaoSupport {
-
-	private String str;
+private String str;
 	
 	public void readTxtFile(String filePath){
         try {
@@ -47,19 +44,19 @@ public class EditJson extends HibernateDaoSupport {
      
     }
 	
-	public List<Data> EditTopJson(){
+	public List<tech> EditTechJson(){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\top\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\top\\updateData.txt";
-		String url="http://v.juhe.cn/toutiao/index?type=top&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
+		String filePath="F:\\myjavacode\\app_server\\data\\tech\\data.txt";
+		String dataPath="F:\\myjavacode\\app_server\\data\\tech\\updateData.txt";
+		String url="http://v.juhe.cn/toutiao/index?type=keji&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url);
 	}
 	
 	
-public List<Data> EditAllJson(String filePath,String dataPath,String url){
+public List<tech> EditAllJson(String filePath,String dataPath,String url){
 				
-		EditJson ej = new EditJson(); 
+		EditTech ej = new EditTech(); 
 		File updateFile=new File(dataPath);
 		FileWriter fw = null;
         BufferedWriter writer = null;
@@ -77,8 +74,8 @@ public List<Data> EditAllJson(String filePath,String dataPath,String url){
         try{
 	        fw = new FileWriter(updateFile);
 	        writer = new BufferedWriter(fw);
-	        List<Data> list = new ArrayList<Data>();
-	        Data data2=new Data();
+	        List<tech> list = new ArrayList<tech>();
+	        tech data2=new tech();
 			
 			for (int i=0;i<data.size();i++){
 				JSONObject o=data.getJSONObject(i);
@@ -111,15 +108,15 @@ public List<Data> EditAllJson(String filePath,String dataPath,String url){
 				if(true){
 					writer.write(i+" ");
 				}
-				if(o.get("type")!=null){
-					writer.write(o.get("type")+" ");
+				if(o.get("category")!=null){
+					writer.write(o.get("category")+" ");
 				}else{
 					continue;
 				}
 				writer.write("\n\r");
 				
 				data2 = ej.sqlAddData("juhe",o.get("title").toString(), o.get("date").toString(), o.get("author_name").toString(), o.get("thumbnail_pic_s").toString(), 
-						urltmp.substring(0, urltmp.length()-14), (i+""), o.get("type").toString());
+						urltmp.substring(0, urltmp.length()-14), (i+""), o.get("category").toString());
 				list.add(data2);
 			}
 			return list;
@@ -136,10 +133,10 @@ public List<Data> EditAllJson(String filePath,String dataPath,String url){
         return null;
 	}
 	
-        public Data sqlAddData(String source,String title,String date,String author_name,
+        public tech sqlAddData(String source,String title,String date,String author_name,
         		String thumbnail_pic_s, String url,String uniquekey,String type){
     	    try {
-    	    	Data data=new Data(new DataId());
+    	    	tech data=new tech(new techId());
     	    	data.getId().setSource(source);;
     	    	data.getId().setTitle(title);
     	    	data.getId().setDate(date);
@@ -156,5 +153,4 @@ public List<Data> EditAllJson(String filePath,String dataPath,String url){
     	    }
 			return null;
         }
-        
 }

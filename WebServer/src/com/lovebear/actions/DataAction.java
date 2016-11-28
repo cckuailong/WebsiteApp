@@ -7,6 +7,7 @@ public class DataAction extends BaseAction{
 
 	private String str;
 	private DataService dataService;
+	private Result<String> result;
 	
 	public String getStr() {
 		return str;
@@ -24,9 +25,17 @@ public class DataAction extends BaseAction{
 		this.dataService = dataService;
 	}
 
-	public void getData(){
-		Result<String> result = dataService.queryToResult(str);
-		print(result);
+	public String getData(){
+		this.result=dataService.queryToResult(str);
+		return SUCCESS;
+	}
+
+	public Result<String> getResult() {
+		return result;
+	}
+
+	public void setResult(Result<String> result) {
+		this.result = result;
 	}
 	
 }

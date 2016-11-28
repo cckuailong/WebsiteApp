@@ -8,6 +8,32 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
+	<bean id="myScheduler"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="myTriggersA"></ref>
+            </list>
+        </property>
+        <property name="autoStartup" value="true"></property>
+    </bean>
+    <bean id="myTriggersA"
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="myJobDetailA">
+        </property>
+        <property name="cronExpression">
+            <value>*/1 * * * * ?</value>
+        </property>
+    </bean>
+    <bean id="myJobDetailA"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myJobA">
+        </property>
+        <property name="targetMethod" value="refreshDao"></property>
+        <property name="concurrent" value="false" />
+
+    </bean>
+    <bean id="myJobA" class="com.lovebear.dao.RefreshDao"/>
 
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -17,6 +43,7 @@
 		<property name="username" value="root"></property>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 	</bean>
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
@@ -32,7 +59,14 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/lovebear/entity/User.hbm.xml</value>
-				<value>com/lovebear/entity/Data.hbm.xml</value></list>
+				<value>com/lovebear/entity/Data.hbm.xml</value>
+				<value>com/lovebear/entity/society.hbm.xml</value>
+				<value>com/lovebear/entity/internation.hbm.xml</value>
+				<value>com/lovebear/entity/sport.hbm.xml</value>
+				<value>com/lovebear/entity/finance.hbm.xml</value>
+				<value>com/lovebear/entity/entertain.hbm.xml</value>
+				<value>com/lovebear/entity/tech.hbm.xml</value>
+				<value>com/lovebear/entity/military.hbm.xml</value></list>
 		</property></bean>
 	<bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" id="transactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -79,4 +113,19 @@
 	scope="prototype">
 		<property name="dataService" ref="dataService"></property>
 	</bean>
+	
+	<!--  dao  -->
+	<bean class="com.lovebear.dao.AdminDao" id="adminDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  actions  -->
+	<bean class="com.lovebear.admin.adminLogin" id="adminLogin"
+	scope="prototype">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.dao.RefreshDao" id="refreshDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 </beans>
