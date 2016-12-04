@@ -26,4 +26,8 @@ public class DataService {
 		return result;
 	}
 	
+	public void quertyToRefreshResult(String hint) {
+		operateDao.queryToRefreshData(hint);
+	}
+	
 }

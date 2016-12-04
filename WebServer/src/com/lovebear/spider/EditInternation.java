@@ -44,17 +44,19 @@ private String str;
      
     }
 	
-	public List<internation> EditInternationJson(){
+	public List<internation> EditInternationJson(String fh,String js,String as,
+			ArrayList<internation> sdList,ArrayList<internation> tiList){
 		
 		String filePath="F:\\myjavacode\\app_server\\data\\internation\\data.txt";
 		String dataPath="F:\\myjavacode\\app_server\\data\\internation\\updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=guoji&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
-		return EditAllJson(filePath, dataPath, url);
+		return EditAllJson(filePath, dataPath, url,fh,js,as,sdList,tiList);
 	}
 	
 	
-public List<internation> EditAllJson(String filePath,String dataPath,String url){
+public List<internation> EditAllJson(String filePath,String dataPath,String url,String fh,String js,String as,
+		ArrayList<internation> sdList,ArrayList<internation> tiList){
 				
 		EditInternation ej = new EditInternation(); 
 		File updateFile=new File(dataPath);
@@ -118,6 +120,54 @@ public List<internation> EditAllJson(String filePath,String dataPath,String url)
 				data2 = ej.sqlAddData("juhe",o.get("title").toString(), o.get("date").toString(), o.get("author_name").toString(), o.get("thumbnail_pic_s").toString(), 
 						urltmp.substring(0, urltmp.length()-14), (i+""), o.get("category").toString());
 				list.add(data2);
+			}
+			
+			//avadar国际
+			if(as!=null){
+				isSimilar sim=new isSimilar();
+				JSONArray  asJson=JSON.parseArray(as);	
+				for(int i=0;i<asJson.size();i++){
+					JSONObject aso=asJson.getJSONObject(i);
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(aso.get("title").toString(), o.get("title").toString()) == true){
+							data2=ej.sqlAddData("avadar",aso.get("title").toString(), aso.get("ctime").toString(), aso.get("description").toString(),
+									aso.get("picUrl").toString(), aso.get("url").toString(), (j+""),o.get("category").toString());
+							list.add(data2);
+							continue;
+						}
+					}
+				}
+			}
+			
+			//新浪国际
+			if(sdList!=null){
+				isSimilar sim=new isSimilar();	
+				for(int i=0;i<sdList.size();i++){
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(sdList.get(i).getId().getTitle().toString(), o.get("title").toString()) == true){
+							sdList.get(i).getId().setUniquekey(j+"");;
+							list.add(sdList.get(i));
+							continue;
+						}
+					}
+				}
+			}
+			
+			//腾讯国际
+			if(tiList!=null){
+				isSimilar sim=new isSimilar();	
+				for(int i=0;i<tiList.size();i++){
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(tiList.get(i).getId().getTitle().toString(), o.get("title").toString()) == true){
+							tiList.get(i).getId().setUniquekey(j+"");;
+							list.add(tiList.get(i));
+							continue;
+						}
+					}
+				}
 			}
 			return list;
         }catch (IOException e) {

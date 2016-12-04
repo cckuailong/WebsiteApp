@@ -10,11 +10,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.catalina.filters.AddDefaultCharsetFilter;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lovebear.entity.entertain;
 import com.lovebear.entity.entertainId;
+import com.lovebear.entity.internation;
 
 public class EditEntertain {
 
@@ -44,17 +47,17 @@ private String str;
      
     }
 	
-	public List<entertain> EditEntertainJson(){
+	public List<entertain> EditEntertainJson(String fh,String js,String as){
 		
 		String filePath="F:\\myjavacode\\app_server\\data\\entertain\\data.txt";
 		String dataPath="F:\\myjavacode\\app_server\\data\\entertain\\updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=yule&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
-		return EditAllJson(filePath, dataPath, url);
+		return EditAllJson(filePath, dataPath, url, fh, js);
 	}
 	
 	
-public List<entertain> EditAllJson(String filePath,String dataPath,String url){
+public List<entertain> EditAllJson(String filePath,String dataPath,String url,String fh,String js){
 				
 		EditEntertain ej = new EditEntertain(); 
 		File updateFile=new File(dataPath);
@@ -70,7 +73,7 @@ public List<entertain> EditAllJson(String filePath,String dataPath,String url){
 		JSONObject  Json=JSON.parseObject(ej.str);
 		JSONObject  dataJson=JSONObject.parseObject(Json.get("result").toString());
 		JSONArray data=dataJson.getJSONArray("data");
-		
+		//æ€∫œ”È¿÷£®◊‹£©
         try{
 	        fw = new FileWriter(updateFile);
 	        writer = new BufferedWriter(fw);
@@ -119,6 +122,42 @@ public List<entertain> EditAllJson(String filePath,String dataPath,String url){
 						urltmp.substring(0, urltmp.length()-14), (i+""), o.get("category").toString());
 				list.add(data2);
 			}
+			//∑ÔªÀ”È¿÷
+			if(fh!=null){
+				isSimilar sim=new isSimilar();
+				JSONArray  fhJson=JSON.parseArray(fh);	
+				for(int i=0;i<fhJson.size();i++){
+					JSONObject fho=fhJson.getJSONObject(i);
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(fho.get("title").toString(), o.get("title").toString()) == true){
+							data2=ej.sqlAddData("fenghuang",fho.get("title").toString(), "NAN", "NAN", fho.get("thumbnail").toString(), 
+									fho.get("url").toString(), (j+""),o.get("category").toString());
+							list.add(data2);
+							continue;
+						}
+					}
+				}
+			}
+			
+			//º´ÀŸ”È¿÷
+			if(js!=null){
+				isSimilar sim=new isSimilar();
+				JSONArray  jsJson=JSON.parseArray(js);	
+				for(int i=0;i<jsJson.size();i++){
+					JSONObject jso=jsJson.getJSONObject(i);
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(jso.get("title").toString(), o.get("title").toString()) == true){
+							data2=ej.sqlAddData("jisu",jso.get("title").toString(), jso.get("time").toString(), jso.get("src").toString(),
+									jso.get("pic").toString(), jso.get("url").toString(), (j+""),o.get("category").toString());
+							list.add(data2);
+							continue;
+						}
+					}
+				}
+			}
+			
 			return list;
         }catch (IOException e) {
             e.printStackTrace();
@@ -137,7 +176,7 @@ public List<entertain> EditAllJson(String filePath,String dataPath,String url){
         		String thumbnail_pic_s, String url,String uniquekey,String type){
     	    try {
     	    	entertain data=new entertain(new entertainId());
-    	    	data.getId().setSource(source);;
+    	    	data.getId().setSource(source);
     	    	data.getId().setTitle(title);
     	    	data.getId().setDate(date);
     	    	data.getId().setAuthorName(author_name);
@@ -153,4 +192,5 @@ public List<entertain> EditAllJson(String filePath,String dataPath,String url){
     	    }
 			return null;
         }
+        
 }

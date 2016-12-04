@@ -44,17 +44,19 @@ public class EditSociety {
      
     }
 	
-	public List<society> EditSocietyJson(){
+	public List<society> EditSocietyJson(String fh,String js,String as,
+			ArrayList<society> sdList,ArrayList<society> tsList){
 		
 		String filePath="F:\\myjavacode\\app_server\\data\\society\\data.txt";
 		String dataPath="F:\\myjavacode\\app_server\\data\\society\\updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=shehui&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
-		return EditAllJson(filePath, dataPath, url);
+		return EditAllJson(filePath, dataPath, url,fh,js,sdList,tsList);
 	}
 	
 	
-public List<society> EditAllJson(String filePath,String dataPath,String url){
+public List<society> EditAllJson(String filePath,String dataPath,String url,String fh,String js,
+		ArrayList<society> sdList,ArrayList<society> tsList){
 				
 		EditSociety ej = new EditSociety(); 
 		File updateFile=new File(dataPath);
@@ -118,6 +120,36 @@ public List<society> EditAllJson(String filePath,String dataPath,String url){
 				data2 = ej.sqlAddData("juhe",o.get("title").toString(), o.get("date").toString(), o.get("author_name").toString(), o.get("thumbnail_pic_s").toString(), 
 						urltmp.substring(0, urltmp.length()-14), (i+""), o.get("category").toString());
 				list.add(data2);
+			}
+			
+			//新浪社会
+			if(sdList!=null){
+				isSimilar sim=new isSimilar();	
+				for(int i=0;i<sdList.size();i++){
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(sdList.get(i).getId().getTitle().toString(), o.get("title").toString()) == true){
+							sdList.get(i).getId().setUniquekey(j+"");;
+							list.add(sdList.get(i));
+							continue;
+						}
+					}
+				}
+			}
+			
+			//腾讯社会
+			if(tsList!=null){
+				isSimilar sim=new isSimilar();	
+				for(int i=0;i<tsList.size();i++){
+					for(int j=0;j<data.size();j++){
+						JSONObject o=data.getJSONObject(j);
+						if(sim.isSimilar(tsList.get(i).getId().getTitle().toString(), o.get("title").toString()) == true){
+							tsList.get(i).getId().setUniquekey(j+"");;
+							list.add(tsList.get(i));
+							continue;
+						}
+					}
+				}
 			}
 			return list;
         }catch (IOException e) {

@@ -17,5 +17,8 @@
 	<action name="deleteByUniquekey" method="deleteByUniquekey" class="com.lovebear.admin.adminLogin">
 		<result name="success">index.html</result>
 	</action>
+	<action name="refreshData" method="refreshData" class="com.lovebear.actions.DataAction">
+		<result name="success">refreshData.jsp</result>
+	</action>
 </package>
 </struts>    

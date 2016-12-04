@@ -20,6 +20,15 @@ public class DataAction extends BaseAction{
 	public DataService getDataService() {
 		return dataService;
 	}
+	
+
+	public Result<String> getResult() {
+		return result;
+	}
+
+	public void setResult(Result<String> result) {
+		this.result = result;
+	}
 
 	public void setDataService(DataService dataService) {
 		this.dataService = dataService;
@@ -30,12 +39,9 @@ public class DataAction extends BaseAction{
 		return SUCCESS;
 	}
 
-	public Result<String> getResult() {
-		return result;
-	}
-
-	public void setResult(Result<String> result) {
-		this.result = result;
+	public String refreshData(){
+		dataService.quertyToRefreshResult(str);
+		return SUCCESS;
 	}
 	
 }
