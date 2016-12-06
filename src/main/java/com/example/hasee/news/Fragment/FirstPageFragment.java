@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.hasee.news.Bean.BannerBean;
 import com.example.hasee.news.Bean.Data;
@@ -51,7 +52,6 @@ public class FirstPageFragment extends Fragment implements  JsonUtils.CallBackLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_layout,container,false);
         getData();
-
         mrecyclerview = (RecyclerView) view.findViewById(R.id.recycle_view);
         swip = (SwipeRefreshLayout) view.findViewById(R.id.swip);
         swip.setOnRefreshListener(this);
@@ -93,9 +93,13 @@ public class FirstPageFragment extends Fragment implements  JsonUtils.CallBackLi
             @Override
             public void onClick(View itemView, int position) {
                 String url = item_list.get(position-1).getUrl();
+                String text = item_list.get(position-1).getTitle();
+                String pic_url = item_list.get(position-1).getThumbnail_pic_s();
                 //Log.i("", "onClick: --->"+position);
                 Intent intent = new Intent(getActivity(), MsgDetialActivity.class);
                 intent.putExtra("url",url);
+                intent.putExtra("title",text);
+                intent.putExtra("pic_url",pic_url);
                 intent.putExtra("position",mPosition);
                 startActivity(intent);
             }

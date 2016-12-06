@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="?attr/bg"
+    android:layout_height="match_parent">
+    <view.TitleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tv_title="系统设置"
+        android:id="@+id/setting_title" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/setting_label"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="夜间模式"
+            android:textColor="?attr/text_color"
+            android:textSize="18sp"
+            />
+        <CheckBox
+            android:id="@+id/setting_cb_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_alignBottom="@id/setting_label"
+            android:layout_alignTop="@id/setting_label"
+            android:button="@drawable/selector_cb_bg"
+
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>
