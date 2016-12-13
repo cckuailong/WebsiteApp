@@ -51,5 +51,5 @@ ServletRequestAware,ServletResponseAware{
 	protected void print(Object o,String...params) {
 		out.print(JSONTools.toJsonString(o, params));
 	}
-
+	
 }

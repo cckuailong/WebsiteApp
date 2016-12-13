@@ -19,11 +19,14 @@
             <key-property name="email" type="string">
                 <column name="email" length="50" />
             </key-property>
-            <key-property name="photoUrl" type="string">
-                <column name="photo_url" length="200" />
-            </key-property>
             <key-property name="token" type="string">
                 <column name="token" length="100" />
+            </key-property>
+            <key-property name="gender" type="string">
+                <column name="gender" length="10" />
+            </key-property>
+            <key-property name="nickname" type="string">
+                <column name="nickname" length="50" />
             </key-property>
         </composite-id>
     </class>

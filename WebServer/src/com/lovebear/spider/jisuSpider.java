@@ -31,7 +31,7 @@ public class jisuSpider {
                         "military","tech"};
 		for(int i=0;i<pathList.length;i++){
 			String path="http://api.jisuapi.com/news/get?channel="+pathList[i]+"&start=0&num=20&appkey=beb00ed22ce29be7";
-			String filename="F:\\myjavacode\\app_server\\data\\jisu\\"+filenameLiString[i]+".txt";
+			String filename="/data/jisu/"+filenameLiString[i]+".txt";
 			try {
 				Spider.downloadPage(path, filename);
 			} catch (Exception e) {
@@ -73,7 +73,7 @@ public class jisuSpider {
 		jisuDowload();
 		
 		for(int i=0;i<filenameLiString.length;i++){
-			filename="F:\\myjavacode\\app_server\\data\\jisu\\"+filenameLiString[i]+".txt";
+			filename="/data/jisu/"+filenameLiString[i]+".txt";
 			readTxtFile(filename);
 			JSONObject  Json=JSON.parseObject(str);
 			JSONObject  predataJson=JSONObject.parseObject(Json.get("result").toString());

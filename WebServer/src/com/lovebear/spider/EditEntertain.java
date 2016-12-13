@@ -49,8 +49,8 @@ private String str;
 	
 	public List<entertain> EditEntertainJson(String fh,String js,String as){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\entertain\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\entertain\\updateData.txt";
+		String filePath="/data/entertain/data.txt";
+		String dataPath="/data/entertain/updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=yule&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url, fh, js);

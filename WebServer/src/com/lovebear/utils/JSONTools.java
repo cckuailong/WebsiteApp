@@ -16,9 +16,20 @@ public class JSONTools {
 	public static String toJsonString(Object o,String...params) {
 		List<String> list = toList(params);
 		Object o2 = JSON.parse(JSON.toJSONString(o));
-		System.out.println(o2);
 		filterParam(o2,list);
-		return o2.toString();
+		String strtmp=o2.toString().replace("\\\"authorName\\\"", "\"authorName\"");
+		strtmp=strtmp.replace("\\\"date\\\"", "\"date\"");
+		strtmp=strtmp.replace("\\\"source\\\"", "\"source\"");
+		strtmp=strtmp.replace("\\\"thumbnailPicS\\\"", "\"thumbnailPicS\"");
+		strtmp=strtmp.replace("\\\"title\\\"", "\"title\"");
+		strtmp=strtmp.replace("\\\"type\\\"", "\"type\"");
+		strtmp=strtmp.replace("\\\"uniquekey\\\"", "\"uniquekey\"");
+		strtmp=strtmp.replace("\\\"url\\\"", "\"url\"");
+		strtmp=strtmp.replace(":\\\"", ":\"");
+		strtmp=strtmp.replace("\\\",", "\",");
+		strtmp=strtmp.replace("\"[{", "[{");
+		strtmp=strtmp.replace("}]\"", "}]");
+		return strtmp.replace("\\\"}", "\"}");
 	}
 
 	private static void filterParam(Object o, List<String> list) {

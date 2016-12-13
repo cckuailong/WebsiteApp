@@ -47,8 +47,8 @@ private String str;
 	public List<internation> EditInternationJson(String fh,String js,String as,
 			ArrayList<internation> sdList,ArrayList<internation> tiList){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\internation\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\internation\\updateData.txt";
+		String filePath="/data/internation/data.txt";
+		String dataPath="/data/internation/updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=guoji&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url,fh,js,as,sdList,tiList);

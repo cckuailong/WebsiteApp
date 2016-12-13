@@ -17,7 +17,7 @@ public class RefreshDao{
 	public void work() {
 		int statusCode = 0;
 		HttpClient httpClient = new HttpClient();
-		GetMethod getMethod = new GetMethod("http://localhost:8080/app_server/refreshData?str=1");
+		GetMethod getMethod = new GetMethod("http://101.200.61.191/app_server/refreshData?str=1");
 		try {				
 			statusCode = httpClient.executeMethod(getMethod);
 			if(statusCode==HttpStatus.SC_OK){

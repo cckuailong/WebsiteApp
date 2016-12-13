@@ -46,8 +46,8 @@ private String str;
 	
 	public List<sport> EditSportJson(String fh,String js,String as){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\sport\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\sport\\updateData.txt";
+		String filePath="/data/sport/data.txt";
+		String dataPath="/data/sport/updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=tiyu&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url,fh,js,as);

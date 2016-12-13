@@ -121,12 +121,44 @@
 	</bean>
 	
 	<!--  dao  -->
-	<bean class="com.lovebear.dao.AdminDao" id="adminDao">
+	<bean class="com.lovebear.admindao.TopDao" id="topDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<!--  actions  -->
 	<bean class="com.lovebear.admin.adminLogin" id="adminLogin"
 	scope="prototype">
-		<property name="adminDao" ref="adminDao"></property>
 	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.FinanceDao" id="financeDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.EntertainDao" id="entertainDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.SportDao" id="sportDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.MilitaryDao" id="militaryDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.TechDao" id="techDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.InternationDao" id="internationDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.SocietyDao" id="societyDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--  dao  -->
+	<bean class="com.lovebear.admindao.UserInfoDao" id="userInfoDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
 </beans>
