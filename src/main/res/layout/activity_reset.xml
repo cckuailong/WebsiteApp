@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_title="重置密码"
+        app:tv_tv_right_visibility="visable"
+        app:tv_right="确定"
+        android:id="@+id/reset_title"
+        app:tv_back_visibility="visable"
+        >
+    </view.TitleView>
+    <view.MEditText
+        android:id="@+id/reset_password1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:me_del_enable="true"
+        app:me_eye_enable="false"
+        app:me_hint="旧密码"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:input_type="normal"
+        app:me_lable_src="@drawable/pwd_focused"
+        />
+
+    <view.MEditText
+        android:id="@+id/reset_password2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:me_del_enable="true"
+        app:me_eye_enable="false"
+        app:me_hint="新密码"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:input_type="password"
+        app:me_lable_src="@drawable/pwd_focused"
+        />
+
+    <view.MEditText
+        android:id="@+id/reset_password3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:me_del_enable="true"
+        app:me_eye_enable="true"
+        app:me_hint="新密码"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:input_type="password"
+        app:me_lable_src="@drawable/pwd_focused"
+
+        />
+
+</LinearLayout>

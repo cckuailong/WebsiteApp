@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="?attr/bg"
+    android:layout_height="match_parent">
+    <view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_title="HITNEWS"
+        app:tv_right="确定"
+        android:id="@+id/tabs_title"
+        app:tv_tv_right_visibility="visable"
+   />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/center_divider"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/bg"
+        android:text="我的频道"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="?attr/text_color"
+        android:textSize="18sp"
+        />
+
+    </LinearLayout>
+    <GridView
+        android:id="@+id/tabs_my"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:numColumns="5"
+        android:listSelector="@android:color/transparent"
+        android:verticalSpacing="5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/center_divider"
+        >
+        <TextView
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/bg"
+            android:text="其他频道"
+            android:layout_gravity="center_horizontal"
+
+            android:textColor="?attr/text_color"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+    <GridView
+        android:id="@+id/tabs_other"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:numColumns="5"
+        android:listSelector="@android:color/transparent"
+        android:verticalSpacing="5dp"
+
+
+
+        />
+</LinearLayout>

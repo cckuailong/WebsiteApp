@@ -1,26 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="?attr/bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.hasee.news.MainActivity"
-    android:orientation="vertical">
-
-    <android.support.design.widget.TabLayout
-        app:tabMode="fixed"
+    android:layout_height="match_parent">
+    <view.TitleView
+        android:background="@drawable/bg_usercenter_top"
+        android:id="@+id/main_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        android:id="@+id/tab_title">
-    </android.support.design.widget.TabLayout>
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/viewPager"
+        android:layout_height="40dp"
+        app:tv_title="HITNEWS"
+        app:tv_back_visibility="gone"
+        app:tv_tv_right_visibility="gone"
+        app:tv_img_right_visibility="visable"
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.viewpagerindicator.TabPageIndicator
+            android:layout_toLeftOf="@+id/main_add_tab"
+            android:id="@+id/main_idictor"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+
+        />
+        <ImageButton
+            android:id="@+id/main_add_tab"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/selector_btn_tab_add_bg"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+</RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_content"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+
+        >
+
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>
