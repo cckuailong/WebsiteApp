@@ -26,8 +26,18 @@ public class DataService {
 		return result;
 	}
 	
-	public void quertyToRefreshResult(String hint) {
-		operateDao.queryToRefreshData(hint);
+	public Result<String> quertyToRefreshResult(String hint) {
+		Result<String> result = new Result<String>();
+		try{
+			operateDao.queryToRefreshData(hint);
+			result.state=Result.STATE_SUC;
+			result.descript="RefreshData Successfully";
+		}catch (Exception e) {
+			result.state = Result.STATE_FAIL;
+			result.descript = "Refresh Failure";
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 }

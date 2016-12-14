@@ -47,8 +47,8 @@ public class EditSociety {
 	public List<society> EditSocietyJson(String fh,String js,String as,
 			ArrayList<society> sdList,ArrayList<society> tsList){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\society\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\society\\updateData.txt";
+		String filePath="/data/society/data.txt";
+		String dataPath="/data/society/updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=shehui&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url,fh,js,sdList,tsList);

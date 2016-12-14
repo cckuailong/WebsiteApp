@@ -2,6 +2,7 @@ package com.lovebear.actions;
 
 import com.lovebear.entity.Result;
 import com.lovebear.entity.User;
+import com.lovebear.entity.UserId;
 import com.lovebear.service.UserService;
 
 public class UserAction extends BaseAction{
@@ -26,12 +27,17 @@ public class UserAction extends BaseAction{
 	}
 
 	public void login(){
-		Result<User> result = userService.queryToResult(u);
+		Result<UserId> result = userService.queryToResult(u);
 		print(result, "pwd");
 	}
 	
 	public void register() {
 		Result<Boolean> result = userService.register(u);
+		print(result);
+	}
+	
+	public void update(){
+		Result<String> result = userService.updateUserinfo(u);
 		print(result);
 	}
 }

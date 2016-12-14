@@ -48,12 +48,12 @@ public void readTxtFile(String filePath){
 	public void getAllJason(){
 		String strEnt,strAll;
 		try {
-			Spider.downloadPage("http://news.ifeng.com/","F:\\myjavacode\\app_server\\data\\fenghuang\\FHdata.txt");
+			Spider.downloadPage("http://news.ifeng.com/","/data/fenghuang/FHdata.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		readTxtFile("F:\\myjavacode\\app_server\\data\\fenghuang\\FHdata.txt");
+		readTxtFile("/data/fenghuang/FHdata.txt");
 		
 		strEnt=str.substring(str.indexOf("[{\""),str.indexOf("\"}]")+3);
 		strAll=str.substring(str.indexOf("[[{\"")+2,str.indexOf("\"}]]")+2);

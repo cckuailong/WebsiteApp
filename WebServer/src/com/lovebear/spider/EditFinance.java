@@ -46,8 +46,8 @@ private String str;
 	
 	public List<finance> EditFinanceJson(String fh,String js,String as){
 		
-		String filePath="F:\\myjavacode\\app_server\\data\\finance\\data.txt";
-		String dataPath="F:\\myjavacode\\app_server\\data\\finance\\updateData.txt";
+		String filePath="/data/finance/data.txt";
+		String dataPath="/data/finance/updateData.txt";
 		String url="http://v.juhe.cn/toutiao/index?type=caijing&key=1ce4e176c63e93e0f32ba4b608f6b9b2";
 		
 		return EditAllJson(filePath, dataPath, url,fh,js);

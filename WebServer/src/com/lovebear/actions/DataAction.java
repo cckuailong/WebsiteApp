@@ -1,7 +1,11 @@
 package com.lovebear.actions;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+
+import com.alibaba.fastjson.JSON;
 import com.lovebear.entity.Result;
 import com.lovebear.service.DataService;
+import com.lovebear.utils.JSONTools;
 
 public class DataAction extends BaseAction{
 
@@ -34,14 +38,16 @@ public class DataAction extends BaseAction{
 		this.dataService = dataService;
 	}
 
-	public String getData(){
+	public void getData(){
 		this.result=dataService.queryToResult(str);
-		return SUCCESS;
+		print(this.result);
+		//return SUCCESS;
 	}
 
-	public String refreshData(){
-		dataService.quertyToRefreshResult(str);
-		return SUCCESS;
+	public void refreshData(){
+		this.result=dataService.quertyToRefreshResult(str);
+		print(this.result);
+		//return SUCCESS;
 	}
 	
 }

@@ -4,6 +4,7 @@
 <package name="default" extends="struts-default" namespace="/">
 	<action name="login" method="login" class="com.lovebear.actions.UserAction"></action>
 	<action name="register" method="register" class="com.lovebear.actions.UserAction"></action>
+	<action name="update" method="update" class="com.lovebear.actions.UserAction"></action>
 	<action name="getData" method="getData" class="com.lovebear.actions.DataAction">
 		<result name="success">test.jsp</result>
 	</action>
@@ -11,12 +12,97 @@
 		<result name="success">index.html</result>
          <result name="error">loginErr.jsp</result>
 	</action>
-	<action name="viewData" method="viewData" class="com.lovebear.admin.adminLogin">
-		<result name="success">operatedata.jsp</result>
+	
+	<action name="topView" method="topView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTopdata.jsp</result>
 	</action>
-	<action name="deleteByUniquekey" method="deleteByUniquekey" class="com.lovebear.admin.adminLogin">
-		<result name="success">index.html</result>
+	<action name="topDeleteByUniq" method="topDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTopdata.jsp</result>
 	</action>
+	<action name="topDeleteMore" method="topDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTopdata.jsp</result>
+	</action>
+	
+	<action name="financeView" method="financeView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewFinancedata.jsp</result>
+	</action>
+	<action name="financeDeleteByUniq" method="financeDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewFinancedata.jsp</result>
+	</action>
+	<action name="financeDeleteMore" method="financeDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewFinancedata.jsp</result>
+	</action>
+	
+	<action name="entertainView" method="entertainView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewEntertaindata.jsp</result>
+	</action>
+	<action name="entertainDeleteByUniq" method="entertainDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewEntertaindata.jsp</result>
+	</action>
+	<action name="entertainDeleteMore" method="entertainDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewEntertaindata.jsp</result>
+	</action>
+	
+	<action name="sportView" method="sportView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSportdata.jsp</result>
+	</action>
+	<action name="sportDeleteByUniq" method="sportDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSportdata.jsp</result>
+	</action>
+	<action name="sportDeleteMore" method="sportDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSportdata.jsp</result>
+	</action>
+	
+	<action name="militaryView" method="militaryView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewMilitarydata.jsp</result>
+	</action>
+	<action name="militaryDeleteByUniq" method="militaryDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewMilitarydata.jsp</result>
+	</action>
+	<action name="militaryDeleteMore" method="militaryDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewMilitarydata.jsp</result>
+	</action>
+	
+	<action name="techView" method="techView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTechdata.jsp</result>
+	</action>
+	<action name="techDeleteByUniq" method="techDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTechdata.jsp</result>
+	</action>
+	<action name="techDeleteMore" method="techDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewTechdata.jsp</result>
+	</action>
+	
+	<action name="internationView" method="internationView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewInternationdata.jsp</result>
+	</action>
+	<action name="internationDeleteByUniq" method="internationDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewInternationdata.jsp</result>
+	</action>
+	<action name="internationDeleteMore" method="internationDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewInternationdata.jsp</result>
+	</action>
+	
+	<action name="societyView" method="societyView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSocietydata.jsp</result>
+	</action>
+	<action name="societyDeleteByUniq" method="societyDeleteByUniq" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSocietydata.jsp</result>
+	</action>
+	<action name="societyDeleteMore" method="societyDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewSocietydata.jsp</result>
+	</action>
+	
+	<action name="userInfoView" method="userInfoView" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewUserInfodata.jsp</result>
+	</action>
+	<action name="userInfoDeleteByUid" method="userInfoDeleteByUid" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewUserInfodata.jsp</result>
+	</action>
+	<action name="userInfoDeleteMore" method="userInfoDeleteMore" class="com.lovebear.admin.adminLogin">
+		<result name="success">ViewUserInfodata.jsp</result>
+	</action>
+	
 	<action name="refreshData" method="refreshData" class="com.lovebear.actions.DataAction">
 		<result name="success">refreshData.jsp</result>
 	</action>

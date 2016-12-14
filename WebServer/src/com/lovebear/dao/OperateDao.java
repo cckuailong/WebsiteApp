@@ -64,17 +64,18 @@ public class OperateDao extends BaseDao<List<Data>>{
 			data=data.substring(0, data.length()-1);
 			data+=']';
 			//trim the data
-			finaldata=data.replace("\\\"", "\"");	
-			System.out.println(finaldata);
+			finaldata=data;
+				
+			//System.out.println(finaldata);
 			//base64 encode to transport
-			
+			/*
 			try {
 				finaldata=new String(Base64.encodeBase64(finaldata.getBytes("utf-8")), "UTF-8");
 				
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			
+			*/
 			return finaldata; 
 		}else{
 			return null;

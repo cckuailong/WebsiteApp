@@ -31,7 +31,7 @@ public class AvatarSpider {
 		String[] filenameLiString={"internation","sport","tech"};
 		for(int i=0;i<pathList.length;i++){
 			String path=pathList[i];
-			String filename="F:\\myjavacode\\app_server\\data\\avatar\\"+filenameLiString[i]+".txt";
+			String filename="/data/avatar/"+filenameLiString[i]+".txt";
 			try {
 				Spider.downloadPage(path, filename);
 			} catch (Exception e) {
@@ -72,7 +72,7 @@ public class AvatarSpider {
 		avatarDowload();
 		
 		for(int i=0;i<filenameLiString.length;i++){
-			filename="F:\\myjavacode\\app_server\\data\\avatar\\"+filenameLiString[i]+".txt";
+			filename="/data/avatar/"+filenameLiString[i]+".txt";
 			readTxtFile(filename);
 			JSONObject  Json=JSON.parseObject(str);
 			JSONArray  dataJson=JSONObject.parseArray(Json.get("result").toString());

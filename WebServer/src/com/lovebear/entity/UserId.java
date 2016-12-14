@@ -16,8 +16,9 @@ public class UserId  implements java.io.Serializable {
      private String phone;
      private String pwd;
      private String email;
-     private String photoUrl;
      private String token;
+     private String gender;
+     private String nickname;
 
 
     // Constructors
@@ -28,13 +29,14 @@ public class UserId  implements java.io.Serializable {
 
     
     /** full constructor */
-    public UserId(String uid, String phone, String pwd, String email, String photoUrl, String token) {
+    public UserId(String uid, String phone, String pwd, String email, String token,String gender,String nickname) {
         this.uid = uid;
         this.phone = phone;
         this.pwd = pwd;
         this.email = email;
-        this.photoUrl = photoUrl;
         this.token = token;
+        this.gender=gender;
+        this.nickname=nickname;
     }
 
    
@@ -72,14 +74,6 @@ public class UserId  implements java.io.Serializable {
         this.email = email;
     }
 
-    public String getPhotoUrl() {
-        return this.photoUrl;
-    }
-    
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
     public String getToken() {
         return this.token;
     }
@@ -87,11 +81,28 @@ public class UserId  implements java.io.Serializable {
     public void setToken(String token) {
         this.token = token;
     }
-   
+
+   public String getGender() {
+		return gender;
+	}
 
 
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-   public boolean equals(Object other) {
+
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
+public boolean equals(Object other) {
          if ( (this == other ) ) return true;
 		 if ( (other == null ) ) return false;
 		 if ( !(other instanceof UserId) ) return false;
@@ -101,8 +112,9 @@ public class UserId  implements java.io.Serializable {
  && ( (this.getPhone()==castOther.getPhone()) || ( this.getPhone()!=null && castOther.getPhone()!=null && this.getPhone().equals(castOther.getPhone()) ) )
  && ( (this.getPwd()==castOther.getPwd()) || ( this.getPwd()!=null && castOther.getPwd()!=null && this.getPwd().equals(castOther.getPwd()) ) )
  && ( (this.getEmail()==castOther.getEmail()) || ( this.getEmail()!=null && castOther.getEmail()!=null && this.getEmail().equals(castOther.getEmail()) ) )
- && ( (this.getPhotoUrl()==castOther.getPhotoUrl()) || ( this.getPhotoUrl()!=null && castOther.getPhotoUrl()!=null && this.getPhotoUrl().equals(castOther.getPhotoUrl()) ) )
- && ( (this.getToken()==castOther.getToken()) || ( this.getToken()!=null && castOther.getToken()!=null && this.getToken().equals(castOther.getToken()) ) );
+ && ( (this.getToken()==castOther.getToken()) || ( this.getToken()!=null && castOther.getToken()!=null && this.getToken().equals(castOther.getToken()) ) )
+ && ( (this.getGender()==castOther.getGender()) || ( this.getGender()!=null && castOther.getGender()!=null && this.getGender().equals(castOther.getGender()) ) )
+ && ( (this.getNickname()==castOther.getNickname()) || ( this.getNickname()!=null && castOther.getNickname()!=null && this.getNickname().equals(castOther.getNickname()) ) );
    }
    
    public int hashCode() {
@@ -112,8 +124,9 @@ public class UserId  implements java.io.Serializable {
          result = 37 * result + ( getPhone() == null ? 0 : this.getPhone().hashCode() );
          result = 37 * result + ( getPwd() == null ? 0 : this.getPwd().hashCode() );
          result = 37 * result + ( getEmail() == null ? 0 : this.getEmail().hashCode() );
-         result = 37 * result + ( getPhotoUrl() == null ? 0 : this.getPhotoUrl().hashCode() );
          result = 37 * result + ( getToken() == null ? 0 : this.getToken().hashCode() );
+         result = 37 * result + ( getGender() == null ? 0 : this.getGender().hashCode() );
+         result = 37 * result + ( getNickname() == null ? 0 : this.getNickname().hashCode() );
          return result;
    }   
 
